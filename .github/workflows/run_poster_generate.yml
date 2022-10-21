@@ -132,7 +132,7 @@ jobs:
       - name: Run sync multiple script
         if: contains(env.TYPE, 'multiple')
         run: |
-          python3 -m github_poster multiple --types "github, bbdc, forest" --github_user_name ${{ secrets.G_USER_NAME }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }}
+          python3 -m github_poster multiple --types "github, bbdc, forest" --github_user_name ${{ secrets.G_USER_NAME }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --me ${{ env.ME }}
 
       - name: Mv svg files to examples
         # only for me to show
