@@ -79,6 +79,11 @@ jobs:
         run: |
           python3 -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn --is-circular
 
+      - name: Run sync issue1 script
+        if: contains(env.TYPE, 'issue')
+        run: |
+          python3 -m github_poster issue --issue_number ${{ secrets.ISSUE_NUMBER_1 }} --repo_name ${{ secrets.REPO_NAME_1 }} --github_token ${{ secrets.G_T_1 }} --me ${{ env.ME }}
+
       # change the types to yours
       - name: Run sync summary script
         if: contains(env.TYPE, 'summary')
