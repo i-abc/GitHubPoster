@@ -79,11 +79,6 @@ jobs:
         run: |
           python3 -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn --is-circular
 
-      - name: Run sync forest3 script
-        if: contains(env.TYPE, 'forest')
-        run: |
-          python3 -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn --with-skyline
-
       - name: Run sync issue1 script
         if: contains(env.TYPE, 'issue')
         run: |
