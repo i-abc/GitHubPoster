@@ -73,7 +73,7 @@ jobs:
       - name: Run sync summary script
         if: contains(env.TYPE, 'summary')
         run: |
-          python3 -m github_poster summary --types "forest, strava, bbdc" --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }} --year 2022
+          python3 -m github_poster summary --types "forest, strava" --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }} --year 2022
 
       - name: Mv svg files to examples
         # only for me to show
