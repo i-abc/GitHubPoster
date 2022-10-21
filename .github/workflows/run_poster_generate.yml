@@ -9,7 +9,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: "strava, bbdc, forest, summary" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
+  TYPE: "strava, bbdc, forest, issue, summary" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
   ME: 蝴蝶
   GITHUB_NAME: i-abc
   GITHUB_EMAIL: 2761105936q@gmail.com
