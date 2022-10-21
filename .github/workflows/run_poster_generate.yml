@@ -61,7 +61,7 @@ jobs:
       - name: Run sync strava4 script
         if: contains(env.TYPE, 'strava')
         run: |
-          python3 -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --with-skyline
+          python3 -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --with-skyline
           
       - name: Run sync bbdc1 script
         if: contains(env.TYPE, 'bbdc')
@@ -82,7 +82,7 @@ jobs:
       - name: Run sync issue1 script
         if: contains(env.TYPE, 'issue')
         run: |
-          python3 -m github_poster issue --issue_number ${{ secrets.ISSUE_NUMBER_1 }} --repo_name ${{ secrets.REPO_NAME_1 }} --github_token ${{ secrets.G_T_1 }} --me ${{ env.ME }}
+          python3 -m github_poster issue --issue_number ${{ secrets.ISSUE_NUMBER_1 }} --repo_name ${{ secrets.REPO_NAME_1 }} --github_token ${{ secrets.G_T_1 }} --me hd
 
       # change the types to yours
       - name: Run sync summary script
