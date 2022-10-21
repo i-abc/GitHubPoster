@@ -9,7 +9,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: "strava1, strava2, bbdc, forest, multiple" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
+  TYPE: "strava1, strava2, bbdc, forest, summary" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
   ME: 蝴蝶
   GITHUB_NAME: i-abc
   GITHUB_EMAIL: 2761105936q@gmail.com
@@ -74,10 +74,10 @@ jobs:
           python3 -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn --is-circular
 
       # change the types to yours
-      - name: Run sync multiple script
-        if: contains(env.TYPE, 'multiple')
+      - name: Run sync summary script
+        if: contains(env.TYPE, 'summary')
         run: |
-          python3 -m github_poster multiple --types "github, bbdc, forest" --github_user_name ${{ secrets.G_USER_NAME }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --me ${{ env.ME }}
+          python3 -m github_poster summary --types "forest1, strava1, bbdc1" --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --year --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }} --year 2022
 
       - name: Mv svg files to examples
         # only for me to show
