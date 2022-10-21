@@ -9,7 +9,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: "strava1, strava2, bbdc, forest, summary" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
+  TYPE: "strava, bbdc, forest, summary" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
   ME: 蝴蝶
   GITHUB_NAME: i-abc
   GITHUB_EMAIL: 2761105936q@gmail.com
@@ -44,32 +44,32 @@ jobs:
         if: steps.pip-cache.outputs.cache-hit != 'true'
 
       - name: Run sync strava1 script
-        if: contains(env.TYPE, 'strava1')
+        if: contains(env.TYPE, 'strava')
         run: |
           python3 -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2021-2022
 
       - name: Run sync strava2 script
-        if: contains(env.TYPE, 'strava2')
+        if: contains(env.TYPE, 'strava')
         run: |
           python3 -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2021-2022 --is-circular
 
       - name: Run sync bbdc1 script
-        if: contains(env.TYPE, 'bbdc1')
+        if: contains(env.TYPE, 'bbdc')
         run: |
           python3 -m github_poster bbdc --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }}
 
       - name: Run sync bbdc2 script
-        if: contains(env.TYPE, 'bbdc2')
+        if: contains(env.TYPE, 'bbdc')
         run: |
           python3 -m github_poster bbdc --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }} --is-circular
 
       - name: Run sync forest1 script
-        if: contains(env.TYPE, 'forest1')
+        if: contains(env.TYPE, 'forest')
         run: |
           python3 -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn
 
       - name: Run sync forest2 script
-        if: contains(env.TYPE, 'forest2')
+        if: contains(env.TYPE, 'forest')
         run: |
           python3 -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn --is-circular
 
@@ -77,7 +77,7 @@ jobs:
       - name: Run sync summary script
         if: contains(env.TYPE, 'summary')
         run: |
-          python3 -m github_poster summary --types "forest1, strava1, bbdc1" --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }} --year 2022
+          python3 -m github_poster summary --types "forest, strava, bbdc" --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }} --year 2022
 
       - name: Mv svg files to examples
         # only for me to show
