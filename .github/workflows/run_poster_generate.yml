@@ -53,15 +53,25 @@ jobs:
         run: |
           python3 -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2021-2022 --is-circular
 
-      - name: Run sync bbdc script
-        if: contains(env.TYPE, 'bbdc')
+      - name: Run sync bbdc1 script
+        if: contains(env.TYPE, 'bbdc1')
         run: |
           python3 -m github_poster bbdc --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }}
 
-      - name: Run sync forest script
-        if: contains(env.TYPE, 'forest')
+      - name: Run sync bbdc2 script
+        if: contains(env.TYPE, 'bbdc2')
+        run: |
+          python3 -m github_poster bbdc --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }} --is-circular
+
+      - name: Run sync forest1 script
+        if: contains(env.TYPE, 'forest1')
         run: |
           python3 -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn
+
+      - name: Run sync forest2 script
+        if: contains(env.TYPE, 'forest2')
+        run: |
+          python3 -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn --is-circular
 
       # change the types to yours
       - name: Run sync multiple script
