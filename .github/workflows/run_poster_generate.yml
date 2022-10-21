@@ -9,7 +9,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: "github, bbdc, multiple" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
+  TYPE: "github, bbdc, forest, multiple" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
   ME: 蝴蝶
   GITHUB_NAME: i-abc
   GITHUB_EMAIL: 2761105936q@gmail.com
@@ -76,7 +76,7 @@ jobs:
       - name: Run sync forest script
         if: contains(env.TYPE, 'forest')
         run: |
-          python -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --year 2022 --cn
+          python -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn
 
       - name: Run sync issue script
         if: contains(env.TYPE, 'issue')
@@ -132,7 +132,7 @@ jobs:
       - name: Run sync multiple script
         if: contains(env.TYPE, 'multiple')
         run: |
-          python3 -m github_poster multiple --types "github, bbdc" --github_user_name ${{ secrets.G_USER_NAME }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }}
+          python3 -m github_poster multiple --types "github, bbdc, forest" --github_user_name ${{ secrets.G_USER_NAME }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }}
 
       - name: Mv svg files to examples
         # only for me to show
