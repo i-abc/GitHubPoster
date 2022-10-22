@@ -2,15 +2,15 @@ name: Run Poster Generate
 
 on:
   workflow_dispatch:
+    inputs:
+      time:
+        description: 'time list'
+        required: false
+      value:
+        description: 'value list'
+        required: false
   schedule:
     - cron: "0 18 * * *"
-  inputs:
-    time:
-      description: 'time list'
-      required: false
-    value:
-      description: 'value list'
-      required: false
 
 env:
   # please change to your own config.
