@@ -77,7 +77,7 @@ jobs:
       - name: Run sync issue2_get_up script
         if: contains(env.TYPE, 'issue')
         run: |
-          python3 -m github_poster issue --issue_number ${{ secrets.ISSUE_NUMBER_2 }} --repo_name ${{ secrets.REPO_NAME_2 }} --github_token ${{ secrets.G_T }} --me hd
+          python3 -m github_poster issue --issue_number ${{ secrets.ISSUE_NUMBER_2 }} --repo_name ${{ secrets.REPO_NAME_2 }} --github_token ${{ secrets.G_T }} --me 早起记录
 
       # change the types to yours
       - name: Run sync summary script
