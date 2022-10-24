@@ -9,7 +9,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: "strava, bbdc, forest, issue, summary" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
+  TYPE: "strava, bbdc, forest, issue, summary, up" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
   ME: 蝴蝶
   GITHUB_NAME: i-abc
   GITHUB_EMAIL: 2761105936q@gmail.com
@@ -70,7 +70,7 @@ jobs:
           python3 -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --me ${{ env.ME }} --cn --is-circular
 
       - name: Run sync issue1 script
-        if: contains(env.TYPE, 'issue')
+        if: contains(env.TYPE, 'up')
         run: |
           python3 -m github_poster issue --issue_number ${{ secrets.ISSUE_NUMBER_1 }} --repo_name ${{ secrets.REPO_NAME_1 }} --github_token ${{ secrets.G_T }} --me hd
 
@@ -88,7 +88,7 @@ jobs:
       - name: Run sync summary1 script
         if: contains(env.TYPE, 'summary')
         run: |
-          python3 -m github_poster summary --types "forest, strava, bbdc, issue, issue" --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --issue_number ${{ secrets.ISSUE_NUMBER_2 }} --repo_name ${{ secrets.REPO_NAME_2 }} --github_token ${{ secrets.G_T }} --issue_number ${{ secrets.ISSUE_NUMBER_3 }} --repo_name ${{ secrets.REPO_NAME_3 }} --github_token ${{ secrets.G_T }} --me ${{ env.ME }} --year 2022
+          python3 -m github_poster summary --types "forest, strava, bbdc, up, issue" --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --issue_number ${{ secrets.ISSUE_NUMBER_2 }} --repo_name ${{ secrets.REPO_NAME_2 }} --github_token ${{ secrets.G_T }} --issue_number ${{ secrets.ISSUE_NUMBER_3 }} --repo_name ${{ secrets.REPO_NAME_3 }} --github_token ${{ secrets.G_T }} --me ${{ env.ME }} --year 2022
 
       - name: Mv svg files to examples
         # only for me to show
