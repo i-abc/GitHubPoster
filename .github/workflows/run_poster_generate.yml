@@ -88,12 +88,7 @@ jobs:
       - name: Run sync summary1 script
         if: contains(env.TYPE, 'summary')
         run: |
-          python3 -m github_poster summary --types "forest, strava" --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --me ${{ env.ME }} --year 2022
-
-      - name: Run sync summary1 script
-        if: contains(env.TYPE, 'summary')
-        run: |
-          python3 -m github_poster summary --types "issue, issue" --issue_number ${{ secrets.ISSUE_NUMBER_2 }} --repo_name ${{ secrets.REPO_NAME_2 }} --github_token ${{ secrets.G_T }} --issue_number ${{ secrets.ISSUE_NUMBER_3 }} --repo_name ${{ secrets.REPO_NAME_3 }} --github_token ${{ secrets.G_T }} --me 早起与早睡记录
+          python3 -m github_poster summary --types "forest, strava, bbdc, issue, issue" --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --cn --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --bbdc_user_id ${{ secrets.BBDC_USER_ID }} --bbdc_type ${{ secrets.BBDC_TYPE }} --issue_number ${{ secrets.ISSUE_NUMBER_2 }} --repo_name ${{ secrets.REPO_NAME_2 }} --github_token ${{ secrets.G_T }} --issue_number ${{ secrets.ISSUE_NUMBER_3 }} --repo_name ${{ secrets.REPO_NAME_3 }} --github_token ${{ secrets.G_T }}--me ${{ env.ME }} --year 2022
 
       - name: Mv svg files to examples
         # only for me to show
